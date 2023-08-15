@@ -15,9 +15,7 @@ function App() {
       <div className="app">
         <Container>
           <Switch>
-            <Route path="/" component={Trending} exact />
-            <Route path="/movies" component={Movies} />
-            <Route path="/series" component={Series} />
+            <Route path="/" component={Movies} exact/>
             <Route path="/search" component={Search} />
           </Switch>
         </Container>

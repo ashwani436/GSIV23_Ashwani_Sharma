@@ -13,6 +13,7 @@ import "./ContentModal.css";
 import { Button } from "@material-ui/core";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import Carousel from "../Carousel/Carousel";
+import { API_KEY } from "../../config/apikey";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -48,7 +49,7 @@ export default function TransitionsModal({ children, media_type, id }) {
 
   const fetchData = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}&language=en-US`
     );
 
     setContent(data);
@@ -57,7 +58,7 @@ export default function TransitionsModal({ children, media_type, id }) {
 
   const fetchVideo = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${API_KEY}&language=en-US`
     );
 
     setVideo(data.results[0]?.key);
@@ -115,7 +116,7 @@ export default function TransitionsModal({ children, media_type, id }) {
                 />
                 <div className="ContentModal__about">
                   <span className="ContentModal__title">
-                    {content.name || content.title} (
+                    {content.name || content.title } (
                     {(
                       content.first_air_date ||
                       content.release_date ||
@@ -125,6 +126,10 @@ export default function TransitionsModal({ children, media_type, id }) {
                   </span>
                   {content.tagline && (
                     <i className="tagline">{content.tagline}</i>
+                  )}
+
+                    {content.vote_average && (
+                    <i className="tagline">{content.vote_average}</i>
                   )}
 
                   <span className="ContentModal__description">

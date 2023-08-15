@@ -32,6 +32,7 @@
 
 .ContentModal__about {
   padding: 10px;
+  font-size: medium;
   width: 95%;
   height: 90%;
   display: flex;
@@ -43,7 +44,7 @@
 
 .ContentModal__title {
   height: 12%;
-  font-size: 5vw;
+  font-size:30px !important;
   display: flex;
   align-items: center;
   justify-content: center;

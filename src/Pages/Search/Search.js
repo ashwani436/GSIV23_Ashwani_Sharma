@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CustomPagination from "../../components/Pagination/CustomPagination";
 import SingleContent from "../../components/SingleContent/SingleContent";
+import { API_KEY } from "../../config/apikey";
 
 const Search = () => {
   const [type, setType] = useState(0);
@@ -33,7 +34,7 @@ const Search = () => {
     try {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${
-          process.env.REACT_APP_API_KEY
+          API_KEY
         }&language=en-US&query=${searchText}&page=${page}&include_adult=false`
       );
       setContent(data.results);
@@ -57,7 +58,7 @@ const Search = () => {
           <TextField
             style={{ flex: 1 }}
             className="searchBox"
-            label="Search"
+            label="Search Movies"
             variant="filled"
             onChange={(e) => setSearchText(e.target.value)}
           />
@@ -69,20 +70,7 @@ const Search = () => {
             <SearchIcon fontSize="large" />
           </Button>
         </div>
-        <Tabs
-          value={type}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={(event, newValue) => {
-            setType(newValue);
-            setPage(1);
-          }}
-          style={{ paddingBottom: 5 }}
-          aria-label="disabled tabs example"
-        >
-          <Tab style={{ width: "50%" }} label="Search Movies" />
-          <Tab style={{ width: "50%" }} label="Search TV Series" />
-        </Tabs>
+      
       </ThemeProvider>
       <div className="trending">
         {content &&

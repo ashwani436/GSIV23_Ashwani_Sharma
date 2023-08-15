@@ -27,11 +27,7 @@ export default function SimpleBottomNavigation() {
     if (value === 0) {
       history.push("/");
     } else if (value === 1) {
-      history.push("/movies");
-    } else if (value === 2) {
-      history.push("/series");
-    } else if (value === 3) {
-      history.push("/search");
+       history.push("/search");
     }
   }, [value, history]);
 
@@ -39,25 +35,17 @@ export default function SimpleBottomNavigation() {
     <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
+        debugger;
         setValue(newValue);
       }}
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction
-        style={{ color: "white" }}
-        label="Trending"
-        icon={<WhatshotIcon />}
-      />
+   
       <BottomNavigationAction
         style={{ color: "white" }}
         label="Movies"
         icon={<MovieIcon />}
-      />
-      <BottomNavigationAction
-        style={{ color: "white" }}
-        label="TV Series"
-        icon={<TvIcon />}
       />
       <BottomNavigationAction
         style={{ color: "white" }}
